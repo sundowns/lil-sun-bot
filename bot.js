@@ -11,7 +11,9 @@ client.on('ready', () => {
 
 client.on('message', msg => {
     var lowercaseContent = msg.content.toLowerCase()
-    if (lowercaseContent === prefix + 'september yet?') {
+    if (lowercaseContent === prefix + 'help') {
+        msg.channel.send("Hello memers these are my memes: \n``` .september yet? \n .thursday yet? \n .misadventures (im stupid)```")
+    } else if (lowercaseContent === prefix + 'september yet?') {
         var month = moment().utcOffset('+0800').month();
         if (month === 8) {
             msg.reply("you betcha homie :confetti_ball: :beers: :MODM: :fraygasm:");
