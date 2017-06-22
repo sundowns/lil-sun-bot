@@ -25,7 +25,7 @@ client.on('message', msg => {
     } else if(lowercaseContent === prefix + 'thursday yet?') {
         var day = moment().utcOffset('+0800').isoWeekday()
         if (day === 4) {
-            msg.reply("you betcha homie :confetti_ball: :hockey: :goal: :reelbigfish:");
+            msg.reply("you betcha homie :confetti_ball: :hockey: :goal: :man_dancing:");
         } else {
             msg.reply("nope just another shit floorball-less day :sob:");
         }
@@ -42,6 +42,9 @@ client.on('message', msg => {
             if (emoji) {
                 msg.react(emoji);
             }
+        }
+        if (lowercaseContent.indexOf("mornin") > -1 && lowercaseContent.indexOf("jeff") > -1) {
+            msg.reply("mornin'");
         }
     }
 });
