@@ -43,6 +43,12 @@ client.on('message', msg => {
                 msg.react(emoji);
             }
         }
+        if (lowercaseContent.indexOf("grim") > -1) {
+            var emoji = msg.guild.emojis.find(findGrim);
+            if (emoji) {
+                msg.react(emoji);
+            }
+        }
         if (lowercaseContent.indexOf("mornin") > -1 && lowercaseContent.indexOf("jeff") > -1) {
             msg.reply("mornin'");
         }
@@ -50,11 +56,15 @@ client.on('message', msg => {
 });
 
 function findMax(emoji) {
-    return emoji.name == "figureitout"
+    return emoji.name == "figureitout";
 }
 
 function findMemba(emoji) {
-    return emoji.name == "memba"
+    return emoji.name == "memba";
+}
+
+function findGrim(emoji){
+    return emoji.name == "grim";
 }
 
 
