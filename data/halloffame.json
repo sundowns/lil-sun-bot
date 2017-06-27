@@ -1,0 +1,8 @@
+{"members": [
+    {"name": "Tim Time", "class" : "Warlock", "image": "http://imgur.com/Ea669Im", "deceased": true},
+    {"name": "Percival of the Light", "class" : "Witchblade", "image": "http://imgur.com/SHbZi5t", "deceased": false},
+    {"name": "Strider", "class" : "Battlemage", "image": "http://imgur.com/lB4zIPf", "deceased": false},
+    {"name": "Sizzling Grim", "class" : "Pyromancer", "image": "http://imgur.com/PrUznFH", "deceased": false},
+    {"name": "Fast & Loose", "class" : "Commando", "image": "http://imgur.com/0AZLBsA", "deceased": false}
+    ]
+}
