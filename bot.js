@@ -21,11 +21,11 @@ client.on('message', msg => {
         msg.channel.send("Hello memers these are my memes: \n``` .september yet? \n .thursday yet? \n .halloffame \n .stash ```")
     }
 
-    //if (lowercaseContent.startsWith(".halloffame")) {halloffame.MessageHandler(lowercaseContent, msg)}
-    //if (lowercaseContent.startsWith(".stash")) {stash.MessageHandler(msg.content, msg)}
-    //misc.MessageHandler(lowercaseContent, msg);
+    if (lowercaseContent.startsWith(".halloffame")) {halloffame.MessageHandler(lowercaseContent, msg)}
+    if (lowercaseContent.startsWith(".stash")) {stash.MessageHandler(msg.content, msg)}
+    misc.MessageHandler(lowercaseContent, msg);
 
     if (lowercaseContent.startsWith(".db")) { db.MessageHandler(lowercaseContent, msg) }
 });
 
-client.login(betaToken);
+client.login(prodToken);
