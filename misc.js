@@ -14,6 +14,19 @@ function findGrim(emoji){
     return emoji.name == "grim";
 }
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const responses = [
+    "watch your filthy mouth",
+    "how dare you say that",
+    "shuddup moite",
+    "those words are forbidden here",
+    "blasphemy won't be tolerated",
+    "hush now"
+];
+
 module.exports = {
     MessageHandler : function(lowercaseContent, msg) {
         if (lowercaseContent === prefix + 'september yet?') {
@@ -54,6 +67,17 @@ module.exports = {
             }
             if (lowercaseContent.indexOf("mornin") > -1 && lowercaseContent.indexOf("jeff") > -1) {
                 msg.reply("mornin'");
+            }
+            if (lowercaseContent.indexOf("pm ") > -1 || lowercaseContent.indexOf(" pm") > -1
+                || lowercaseContent.indexOf(" pm") > -1
+                || lowercaseContent.indexOf("project m") > -1
+                || lowercaseContent.indexOf("projectm") > -1
+                || lowercaseContent === "pm") {
+
+                var index = getRandomInt(0, responses.length - 1);
+                var response = responses[index];
+                msg.reply(response);
+                msg.delete();
             }
         }
     }
