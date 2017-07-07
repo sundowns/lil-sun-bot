@@ -22,11 +22,11 @@ client.on('message', msg => {
     if (lowercaseContent === '.help') {
         msg.channel.send("Hello memers these are my memes: \n```css \n .stash help \n .db [search string] \n .latest \n .halloffame \n .september yet? \n .thursday yet? ```")
     }
-    // if (lowercaseContent.startsWith(".db")) { db.MessageHandler(lowercaseContent, msg) }
-    // if (lowercaseContent.startsWith(".halloffame")) {halloffame.MessageHandler(lowercaseContent, msg)}
-    // if (lowercaseContent.startsWith(".stash")) {stash.MessageHandler(msg.content, msg)}
-    // misc.MessageHandler(lowercaseContent, msg);
+    if (lowercaseContent.startsWith(".db")) { db.MessageHandler(lowercaseContent, msg) }
+    if (lowercaseContent.startsWith(".halloffame")) {halloffame.MessageHandler(lowercaseContent, msg)}
+    if (lowercaseContent.startsWith(".stash")) {stash.MessageHandler(msg.content, msg)}
+    misc.MessageHandler(lowercaseContent, msg);
     feed.MessageHandler(lowercaseContent, msg);
 });
 
-client.login(betaToken);
+client.login(prodToken);
