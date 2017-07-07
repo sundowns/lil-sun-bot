@@ -6,11 +6,13 @@ const misc = require('./misc');
 const halloffame = require('./halloffame');
 const stash = require('./stash');
 const db = require('./db');
+const feed = require('./feed');
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     halloffame.Init();
     stash.Init();
+    feed.Init(client);
 });
 
 client.on('message', msg => {
@@ -18,14 +20,13 @@ client.on('message', msg => {
     var lowercaseContent = msg.content.toLowerCase();
 
     if (lowercaseContent === '.help') {
-        msg.channel.send("Hello memers these are my memes: \n``` .september yet? \n .thursday yet? \n .halloffame \n .stash ```")
+        msg.channel.send("Hello memers these are my memes: \n```css \n .stash help \n .db [search string] \n .latest \n .halloffame \n .september yet? \n .thursday yet? ```")
     }
-    if (lowercaseContent.startsWith(".db")) { db.MessageHandler(lowercaseContent, msg) }
-    if (lowercaseContent.startsWith(".halloffame")) {halloffame.MessageHandler(lowercaseContent, msg)}
-    if (lowercaseContent.startsWith(".stash")) {stash.MessageHandler(msg.content, msg)}
-    misc.MessageHandler(lowercaseContent, msg);
-
-
+    // if (lowercaseContent.startsWith(".db")) { db.MessageHandler(lowercaseContent, msg) }
+    // if (lowercaseContent.startsWith(".halloffame")) {halloffame.MessageHandler(lowercaseContent, msg)}
+    // if (lowercaseContent.startsWith(".stash")) {stash.MessageHandler(msg.content, msg)}
+    // misc.MessageHandler(lowercaseContent, msg);
+    feed.MessageHandler(lowercaseContent, msg);
 });
 
-client.login(prodToken);
+client.login(betaToken);
