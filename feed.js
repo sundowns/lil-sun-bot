@@ -1,5 +1,6 @@
-const moment = require('moment')
-const feedFileName = __dirname + '\\data\\feed.json'
+const moment = require('moment');
+const path = require('path');
+const feedFileName = __dirname + path.normalize('/data/feed.json');
 const misadventureTitleRegex = /Grim Misadventure #([0-9]*):/g;
 var lastRun = null;
 var latest = [];

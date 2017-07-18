@@ -1,9 +1,10 @@
 const jsonfile = require('jsonfile');
+const path = require('path');
 var halloffame = {};
 
 module.exports = {
     Init: function() {
-        var filepath = __dirname + '\\data\\halloffame.json';
+        var filepath = __dirname + path.normalize('/data/halloffame.json');
         jsonfile.readFile(filepath, function(err, obj) {
             if (!err) {
                 halloffame = obj;

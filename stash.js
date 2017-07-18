@@ -1,5 +1,6 @@
 const jsonfile = require('jsonfile');
-const stashFileName = __dirname + '\\data\\stash.json'
+const path = require('path');
+const stashFileName = __dirname + path.normalize('/data/stash.json');
 var stash = {}
 const addRelicRegex = /relic -([m|t|e]) "(.*)"/;
 const addGearRegex = /gear -([m|r|e|l]) "(.*)"/;
