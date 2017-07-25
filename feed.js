@@ -107,7 +107,7 @@ module.exports = {
         requestData();
     },
     MessageHandler : function(lowercaseContent, msg) {
-        if (lowercaseContent === ".latest") {
+        if (lowercaseContent === ".latest" || lowercaseContent === ".misadventures") {
             if (latest != null) {
                 msg.reply(getReplyForLatest());
             } else msg.reply("No new articles since " + lastRun);

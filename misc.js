@@ -36,9 +36,7 @@ module.exports = {
             } else {
                 msg.reply("nope sorry pal :sob:");
             }
-        } else if(lowercaseContent === prefix + 'misadventures') {
-            msg.channel.send("listen m8, im trying");
-        } else if(lowercaseContent === prefix + 'thursday yet?') {
+        } else if (lowercaseContent === prefix + 'thursday yet?') {
             var day = moment().utcOffset('+0800').isoWeekday()
             if (day === 4) {
                 msg.reply("you betcha homie :confetti_ball: :hockey: :goal: :man_dancing:");
