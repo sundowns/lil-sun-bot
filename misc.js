@@ -14,6 +14,10 @@ function findGrim(emoji){
     return emoji.name == "grim";
 }
 
+function findRip(emoji){
+    return emoji.name == "rip";
+}
+
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -48,7 +52,8 @@ module.exports = {
             if (lowercaseContent.indexOf("memba") > -1 || lowercaseContent.indexOf("remember") > -1) {
                 var memba = msg.guild.emojis.find(findMemba);
                 if (memba) {
-                    msg.react('🇮').then(msg.react(memba));
+                    msg.react('🇮');
+                    msg.react(memba);
                 }
             }
             if (lowercaseContent.indexOf("max") > -1) {
@@ -72,10 +77,14 @@ module.exports = {
                 || lowercaseContent.indexOf("projectm") > -1
                 || lowercaseContent === "pm") {
 
-                var index = getRandomInt(0, responses.length - 1);
-                var response = responses[index];
-                msg.reply(response);
-                msg.delete();
+                //var index = getRandomInt(0, responses.length - 1);
+                //var response = responses[index];
+                //msg.reply(response);
+                //msg.delete();
+                var emoji = msg.guild.emojis.find(findRip);
+                if (emoji) {
+                    msg.react(emoji);
+                }
             }
         }
     }
