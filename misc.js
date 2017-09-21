@@ -33,20 +33,16 @@ const responses = [
 
 module.exports = {
     MessageHandler : function(lowercaseContent, msg) {
-        if (lowercaseContent === prefix + 'september yet?') {
-            var month = moment().utcOffset('+0800').month();
-            if (month === 8) {
-                msg.reply("you betcha homie :confetti_ball: :beers: :MODM: :fraygasm:");
-            } else {
-                msg.reply("nope sorry pal :sob:");
-            }
-        } else if (lowercaseContent === prefix + 'floorball yet?') {
+        if (lowercaseContent === prefix + 'floorball yet?') {
             var day = moment().utcOffset('+0800').isoWeekday()
             if (day === 4 || day === 1) {
                 msg.reply("you betcha homie :confetti_ball: :hockey: :goal: :man_dancing:");
             } else {
                 msg.reply("nope just another shit floorball-less day :sob:");
             }
+        }
+        else if (lowercaseContent === prefix + 'melee') {
+            msg.reply("\n**PAL netplay build:** https://drive.google.com/open?id=0B192sB6TRmD3MTM1clNzUHBOZHc \n**Perth UCF build:** https://drive.google.com/open?id=0B1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj \n**Vanilla PAL:** https://drive.google.com/open?id=0B1SUDiY2r7d4YnB0QTBhczRVOTQ");
         }
         else { //free form text detection
             if (lowercaseContent.indexOf("memba") > -1 || lowercaseContent.indexOf("remember") > -1) {
