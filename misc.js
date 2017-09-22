@@ -22,15 +22,6 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const responses = [
-    "watch your filthy mouth",
-    "how dare you say that",
-    "shuddup moite",
-    "those words are forbidden here",
-    "blasphemy won't be tolerated",
-    "hush now"
-];
-
 module.exports = {
     MessageHandler : function(lowercaseContent, msg) {
         if (lowercaseContent === prefix + 'floorball yet?') {

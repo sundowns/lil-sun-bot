@@ -22,7 +22,7 @@ client.on('message', msg => {
     if (lowercaseContent === '.help') {
         msg.channel.send("Hello memers these are my memes: \n```css \n .stash help \n .db [search string] \n .latest \n .halloffame \n .floorball yet? \n .melee ```")
     }
-    if (lowercaseContent.startsWith(".db")) { db.MessageHandler(lowercaseContent, msg) }
+    db.MessageHandler(lowercaseContent, msg)
     if (lowercaseContent.startsWith(".halloffame")) {halloffame.MessageHandler(lowercaseContent, msg)}
     if (lowercaseContent.startsWith(".stash")) {stash.MessageHandler(msg.content, msg)}
     misc.MessageHandler(lowercaseContent, msg);
