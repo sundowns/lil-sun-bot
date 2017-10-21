@@ -1,8 +1,9 @@
 const Discord = require("discord.js");
 const moment = require("moment");
 const dbQueryPattern = "http://www.grimtools.com/db/search?query=";
-const grimToolsBuildPattern = /(?:http:\/\/)?www\.grimtools\.com\/calc\/(.*\S)/;
+const grimToolsBuildPattern = /(?:http:\/\/)?www\.grimtools\.com\/calc\/([A-Za-z0-9]*)\s?(.*)?/;
 const grimToolsBuildApiRequestPattern = "http://www.grimtools.com/get_build_info.php/?id="
+const grimToolsCalcPrefix = "http://grimtools.com/calc/"
 
 //imgur class images album: https://imgur.com/a/WT3mf
 var classes = {
@@ -126,7 +127,7 @@ let findClassFromMasteries = function(mastery1, mastery2) {
     return {name : className, colour : [red, green, blue], image : classes[mastery1].Image };
 }
 
-let formatBuildPost = function(raw, url) {
+let formatBuildPost = function(raw, url, name) {
     var data = raw.data;
     //TODO: lets do a rich embed! https://discord.js.org/#/docs/main/stable/class/RichEmbed
     var embed = new Discord.RichEmbed();
@@ -138,7 +139,11 @@ let formatBuildPost = function(raw, url) {
             masteries.push(key);
         }
         var thisClass = findClassFromMasteries(masteries[0], masteries[1]);
-        embed.setTitle(level + " " + thisClass.name);
+        var title = level + thisClass.name;
+        if (name) {
+            title = title + " - " + name
+        }
+        embed.setTitle(title);
         embed.setURL(url);
         embed.setColor(thisClass.colour);
         embed.addField("____", "**Physique**: " + data.bio.physique + "\n" + "**Cunning**: " + data.bio.cunning + "\n" + "**Spirit**: " + data.bio.spirit);
@@ -187,7 +192,7 @@ module.exports = {
                         if (!error && response && response.statusCode === 200) {
                             var data = JSON.parse(body);
                             var buildLog = msg.guild.channels.find(findBuildLog);
-                            buildLog.send({embed: formatBuildPost(data, content)})
+                            buildLog.send({embed: formatBuildPost(data, grimToolsCalcPrefix + match[1], match[2])})
                         }
                     });
                 }
