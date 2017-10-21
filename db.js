@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const moment = require("moment");
 const dbQueryPattern = "http://www.grimtools.com/db/search?query=";
-const grimToolsBuildPattern = /^http:\/\/www\.grimtools\.com\/calc\/(.*)$/;
+const grimToolsBuildPattern = /(?:http:\/\/)?www\.grimtools\.com\/calc\/(.*\S)/;
 const grimToolsBuildApiRequestPattern = "http://www.grimtools.com/get_build_info.php/?id="
 
 //imgur class images album: https://imgur.com/a/WT3mf
@@ -126,8 +126,6 @@ let findClassFromMasteries = function(mastery1, mastery2) {
     return {name : className, colour : [red, green, blue], image : classes[mastery1].Image };
 }
 
-let findCo
-
 let formatBuildPost = function(raw, url) {
     var data = raw.data;
     //TODO: lets do a rich embed! https://discord.js.org/#/docs/main/stable/class/RichEmbed
@@ -159,6 +157,10 @@ let formatBuildPost = function(raw, url) {
     return embed;
 }
 
+function findBuildLog(channel){
+    return channel.id == "371140437202960394";
+}
+
 module.exports = {
     Init : function() {
         //nothing
@@ -172,7 +174,26 @@ module.exports = {
                 var queryUrl = dbQueryPattern + urlEncodedQueryString;
                 msg.reply(queryUrl);
             }
-        } else { //freeform
+        }
+        else if (lowercaseContent.startsWith(".save")) {
+            //var content = lowercaseContent.slice(5).trim();
+            var content = lowercaseContent.slice(5).trim();
+            var match = grimToolsBuildPattern.exec(msg.content);
+            if (match) {
+                if (match[1]) {
+                    var request = require('request');
+                    var requestUrl = grimToolsBuildApiRequestPattern + match[1];
+                    request(requestUrl, function (error, response, body) {
+                        if (!error && response && response.statusCode === 200) {
+                            var data = JSON.parse(body);
+                            var buildLog = msg.guild.channels.find(findBuildLog);
+                            buildLog.send({embed: formatBuildPost(data, content)})
+                        }
+                    });
+                }
+            }
+        }
+        else { //freeform
             var match = grimToolsBuildPattern.exec(msg.content);
             if (match) {
                 if (match[1]) {
