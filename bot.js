@@ -1,5 +1,4 @@
-const prodToken = 'MzI1MTAzNjM5OTYwMjIzNzQ2.DDx-xQ.0e4CgEZgHkOzjMhTy9S6-NH2wA0';
-const betaToken = 'MzMyMzk3ODA2Mjg5NTUxMzYx.DD9hGQ.O4V-Mp_fdyrn0VpHB7Nx1gmOEhQ';
+const fs = require('fs');
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const misc = require('./misc');
@@ -7,6 +6,7 @@ const halloffame = require('./halloffame');
 const stash = require('./stash');
 const db = require('./db');
 const feed = require('./feed');
+const tokens = require("./tokens");
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
@@ -31,4 +31,11 @@ client.on('message', msg => {
     feed.MessageHandler(lowercaseContent, msg);
 });
 
-client.login(prodToken);
+if (tokens) {
+    if (tokens.prod) {
+        client.login(tokens.prod);
+    } else {
+        console.log("Failed to locate prod token. Goodbye xoxo");
+        process.exit();
+    }
+}
