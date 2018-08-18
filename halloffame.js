@@ -8,7 +8,6 @@ module.exports = {
         jsonfile.readFile(filepath, function(err, obj) {
             if (!err) {
                 halloffame = obj;
-                console.log("Loaded Hall of Fame");
             } else console.log(err);
         });
     },

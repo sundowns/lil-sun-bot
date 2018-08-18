@@ -101,7 +101,6 @@ module.exports = {
             if (!err) {
                 lastRun = new Date(obj.misadventures.lastrun);
                 latest = obj.misadventures.latest;
-                console.log("Loaded Feed");
             } else console.log(err);
         });
         requestData();

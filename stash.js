@@ -89,7 +89,6 @@ module.exports = {
         jsonfile.readFile(stashFileName, function(err, obj) {
             if (!err) {
                 stash = obj;
-                console.log("Loaded Stash");
             } else console.log(err);
         });
     },

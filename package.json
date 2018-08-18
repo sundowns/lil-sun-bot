@@ -1,0 +1,29 @@
+{
+  "name": "lil-sun-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "feedparser": "^2.2.9",
+    "jsonfile": "^3.0.1",
+    "moment": "^2.22.2",
+    "request": "^2.88.0",
+    "request-json": "^0.6.3",
+    "snekfetch": "^3.6.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sundowns/lil-sun-bot.git"
+  },
+  "author": "Tom Smallridge",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sundowns/lil-sun-bot/issues"
+  },
+  "homepage": "https://github.com/sundowns/lil-sun-bot#readme"
+}

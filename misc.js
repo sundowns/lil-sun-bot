@@ -18,6 +18,10 @@ function findRip(emoji){
     return emoji.name == "rip";
 }
 
+function findGudShit(emoji){
+   return emoji.name == "gud_shit";
+}
+
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -26,21 +30,21 @@ module.exports = {
     MessageHandler : function(lowercaseContent, msg) {
         if (lowercaseContent === prefix + 'floorball yet?') {
             var day = moment().utcOffset('+0800').isoWeekday()
-            if (day === 4 || day === 1) {
-                msg.reply("you betcha homie :confetti_ball: :hockey: :goal: :man_dancing:");
+            if (day > 1 || day === 3) {
+               msg.reply("you betcha homie :confetti_ball: :hockey: :goal: :man_dancing: " + msg.guild.emojis.find(findGudShit));
             } else {
-                msg.reply("nope just another shit floorball-less day :sob:");
+                msg.reply(":sob: :sob: :sob: :sob:");
             }
-        }
-        else if (lowercaseContent === prefix + 'melee') {
-            msg.reply("\n**PAL netplay build:** https://drive.google.com/open?id=0B192sB6TRmD3MTM1clNzUHBOZHc \n**Perth UCF build:** https://drive.google.com/open?id=0B1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj \n**Vanilla PAL:** https://drive.google.com/open?id=0B1SUDiY2r7d4YnB0QTBhczRVOTQ");
         }
         else { //free form text detection
             if (lowercaseContent.indexOf("memba") > -1 || lowercaseContent.indexOf("remember") > -1) {
                 var memba = msg.guild.emojis.find(findMemba);
                 if (memba) {
-                    msg.react('🇮');
-                    msg.react(memba);
+                    msg.react('🇮').then(() => {
+                       setTimeout(() => {
+                          msg.react(memba);
+                       }, 200)
+                    });
                 }
             }
             if (lowercaseContent.indexOf("max") > -1) {
@@ -51,6 +55,12 @@ module.exports = {
             }
             if (lowercaseContent.indexOf("grim") > -1) {
                 var emoji = msg.guild.emojis.find(findGrim);
+                if (emoji) {
+                    msg.react(emoji);
+                }
+            }
+            if (lowercaseContent.indexOf("love it") > -1 || lowercaseContent.indexOf("amazing") > -1 || lowercaseContent.indexOf("great") > -1) {
+                var emoji = msg.guild.emojis.find(findGudShit);
                 if (emoji) {
                     msg.react(emoji);
                 }
