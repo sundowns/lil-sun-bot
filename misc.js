@@ -30,7 +30,7 @@ module.exports = {
     MessageHandler : function(lowercaseContent, msg) {
         if (lowercaseContent === prefix + 'floorball yet?') {
             var day = moment().utcOffset('+0800').isoWeekday()
-            if (day > 1 || day === 3) {
+            if (day === 4 || day === 3) {
                msg.reply("you betcha homie :confetti_ball: :hockey: :goal: :man_dancing: " + msg.guild.emojis.find(findGudShit));
             } else {
                 msg.reply(":sob: :sob: :sob: :sob:");
