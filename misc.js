@@ -35,8 +35,15 @@ module.exports = {
             } else {
                 msg.reply(":sob: :sob: :sob: :sob:");
             }
-        }
-        else { //free form text detection
+         } else if (lowercaseContent.startsWith(prefix + 'f')) {
+           var result = msg.content.match(/\.f (.+)/);
+           if (result) {
+                msg.channel.send("Press 🇫 to pay respects to " + result[1]).then(message => message.react("🇫"));
+           } else if (lowercaseContent === ".f") {
+                msg.channel.send("Press 🇫 to pay respects").then(message => message.react("🇫"));
+           }
+         }
+         else { //free form text detection
             if (lowercaseContent.indexOf("memba") > -1 || lowercaseContent.indexOf("remember") > -1) {
                 var memba = msg.guild.emojis.find(findMemba);
                 if (memba) {
@@ -83,6 +90,6 @@ module.exports = {
                     msg.react(emoji);
                 }
             }
-        }
+         }
     }
 }
